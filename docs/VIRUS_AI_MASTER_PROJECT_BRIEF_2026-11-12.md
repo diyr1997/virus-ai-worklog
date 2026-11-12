@@ -354,3 +354,132 @@ Missing values remain UNKNOWN/MISSING, not zero or FALSE. Preserve original sour
 No stage is complete based only on code presence, a design mockup or a provider's marketing claim. Require reproducible tests and observed runtime evidence.
 
 **Owner's explicit clarification:** The deliverable is an original VIRUS AI-owned worldwide economic calendar and world-news/micro-news intelligence system, combining permitted information from TradingView, Interactive Brokers, Investing.com and official institutions/banks of countries worldwide. The entire AI Council should help research, design, validate and implement it.
+
+## 11. Owner clarification — Global Economic Intelligence Map and World News Intelligence (2026-11-12)
+
+The owner explicitly requires a complete, original VIRUS AI-owned **Global Economic Intelligence Map**. This is broader than an economic calendar. The Council must help research, architect, build and validate it as a core product.
+
+### 11.1 Product outcome
+Create one worldwide view that connects:
+- all countries and relevant jurisdictions;
+- their central banks, monetary authorities, national statistical offices, finance ministries/treasuries, debt offices, customs, labour, energy, mining, regulators, exchanges and official government publication channels;
+- macroeconomic indicators, monetary/fiscal policy, public debt, banking/financial conditions, trade, labour, prices, production, energy and strategic commodities;
+- scheduled releases, unscheduled decisions, official statements and developing world news;
+- cross-country relationships and transmission channels;
+- a separate fast world-news/micro-news stream, with a dedicated assessment of possible economic, market and XAUUSD effects.
+
+The product must present a global map, country profiles, institution/source profiles, indicator dashboards, a unified event calendar, historical series, comparison tools, news stream, alerts and explainable relationship/impact views inside the VIRUS AI app.
+
+### 11.2 Learn from existing platforms without copying their product
+Research how the following platforms collect, process and present data:
+- TradingView: market data, economic indicators, calendar, charts, Macro Maps and country views. TradingView announced on 2026-11-09 that its economic data feed switched on 2026-11-05 to an in-house feed sourced directly from publishing institutions, including central banks, national statistical offices, World Bank and IMF. This is an architectural reference for building VIRUS-owned ingestion infrastructure, not permission to copy TradingView's data or implementation.
+- Interactive Brokers: market-data and news-provider integrations exposed through documented APIs; actual news providers and market-data access depend on subscriptions, permissions and redistribution rights.
+- Investing.com: event calendar with Actual / Forecast / Previous and expected-impact classification. Treat displayed consensus as an estimate from a survey/provider, not an official government value. Obtain actual release values from the publishing institution whenever possible.
+- Also study global macro-data platforms and official portals such as IMF Data, World Bank Data, BIS Data Portal, ECB Data Portal, FRED/ALFRED, BLS and BEA. These are reference architectures and potential direct sources, subject to their API terms and data limitations.
+
+### 11.3 Source-of-truth hierarchy
+For each observation/event, identify its provenance and classify it:
+1. **Primary official release:** originating central bank, statistics office, ministry, regulator, exchange or government agency.
+2. **Official international compiler:** IMF, World Bank, BIS, OECD, UN, ECB/Eurostat and other relevant international bodies. Record whether the value is reported by a country, harmonised, estimated or compiled by the institution.
+3. **Licensed market/news provider:** use within subscription and redistribution permissions; retain provider attribution and restrictions.
+4. **Secondary media/aggregator:** discovery, context and corroboration only unless the item is explicitly attributed and its evidence is preserved.
+5. **Social/unverified:** early leads only; never silently promote to confirmed fact.
+
+"Official" does not automatically mean "latest" or "error-free". Record publication time, first-seen time, update/revision time, retrieval time, source health and known delay. If sources conflict, preserve both observations and flag the conflict; do not silently select one.
+
+### 11.4 Country and institution graph
+Build a maintained global registry and graph:
+- country/jurisdiction → institution → official channel/dataset → indicator/event → release schedule → observations/vintages;
+- institution mandates, jurisdiction, language, timezone, website/domain, API/feed/document endpoints, formats, update cadence, access/licence terms, reliability evidence, last successful retrieval and health;
+- cross-border and regional bodies mapped separately from national authorities;
+- coverage dashboard with country × institution × topic × indicator × frequency × source tier × freshness, including explicit missing-source gaps.
+
+Use ISO country/jurisdiction identifiers and stable VIRUS IDs. Do not assume every country publishes every indicator or has a machine-readable API. For gaps, research official bulletins, downloadable files, structured pages and permitted document extraction; retain a human-review state where automation cannot reliably parse.
+
+### 11.5 Economic indicator ontology
+Create a canonical multilingual taxonomy and metadata dictionary for:
+- national accounts: GDP, GNI, output, productivity, consumption, investment;
+- prices: CPI, core CPI, PPI, PCE/HICP where applicable, inflation expectations;
+- labour: unemployment, participation, payrolls, wages, vacancies, hours;
+- monetary/central banking: policy rates, decisions, minutes, speeches, balance sheets, money supply, credit, reserves, FX operations;
+- fiscal/sovereign: budgets, deficits, revenues, spending, debt, issuance, auctions, yields, ratings and payment events;
+- external sector: exports/imports, trade balance, current account, capital flows, FX reserves;
+- industry and demand: manufacturing/services, PMI, industrial production, retail sales, housing, confidence;
+- energy/commodities: oil, gas, electricity, gold, silver, critical minerals, production, inventories, exports and supply disruptions;
+- banking/financial system: deposits, lending, non-performing loans, liquidity, capital, systemic risk, payment systems and financial stability;
+- policy/regulatory/geopolitical events with explicit evidence and status.
+For every series define unit, currency, scale, frequency, seasonal adjustment, reference period, release lag, methodology, source, revision policy and comparability limitations.
+
+### 11.6 Data collection and processing pipeline
+Council must design a robust pipeline:
+1. Discover/register official source endpoints and legal access conditions.
+2. Poll APIs/SDMX or subscribe to feeds where available; monitor official release calendars/RSS; retrieve permitted HTML/PDF/XLS/CSV documents when no API exists.
+3. Preserve immutable raw source payload/document, retrieval timestamp, content hash and source URL.
+4. Parse into a staging layer; validate schema, units, period, timezone, encoding and country/institution identity.
+5. Normalize to canonical VIRUS schemas without destroying original values.
+6. Deduplicate while retaining source observations and conflicting values.
+7. Store publication vintages and revisions as append-only history; never overwrite the original release.
+8. Publish validated records to the global map, country profile, indicator series, event calendar and news stream.
+9. Track freshness, latency, missingness, parser failures, source outages and reconciliation results.
+10. Re-fetch/reconcile corrections and publish a visible correction history.
+
+Use incremental ingestion, retry/backoff, rate limits, caching, idempotency, dead-letter handling, source health checks and a replayable audit trail. The pipeline must not depend on scraping a rendered page when a stable official API or feed exists.
+
+### 11.7 Separate World News / Micro-News Intelligence stream
+This is a distinct product stream, connected to but not confused with official statistical observations:
+- monitor official central-bank, government, regulator, exchange, energy-agency, international-organisation and company/industry announcements, plus licensed news feeds;
+- detect first publication and first-seen time; preserve original headline, source, language, URL, evidence and subsequent updates;
+- classify FACT / OFFICIAL STATEMENT / ATTRIBUTED REPORT / UNVERIFIED LEAD / ANALYSIS / MODEL HYPOTHESIS;
+- cluster duplicate reports, translate/summarise, resolve entities and connect each item to countries, institutions, sectors, commodities and indicators;
+- detect escalation, policy shifts, supply interruptions, sanctions, tariffs, conflict developments, banking stress and other potentially material events;
+- maintain corroboration, contradiction, retraction and correction states;
+- score novelty, source reliability, urgency, economic significance and XAUUSD relevance as separate explainable dimensions;
+- keep a low-latency breaking-news stream separate from the slower scheduled macro calendar and historical indicator database.
+
+### 11.8 Economic World Map and cross-country intelligence
+The map is an analytical interface, not merely a decorative world map. It should allow:
+- selecting a country to inspect current economic state, central bank, latest official releases, upcoming calendar, historical trends and source freshness;
+- comparing countries/regions on equivalent indicators with unit, frequency, methodology and vintage alignment;
+- viewing global heatmaps for inflation, rates, unemployment, GDP growth, debt, trade and other supported indicators;
+- tracing dependencies and spillovers (e.g. policy rates → currency/yields → capital flows/commodities → other economies);
+- following regional blocs, trade/energy relationships and institution networks;
+- distinguishing measured observations from estimates, consensus, forecasts and VIRUS AI analysis.
+
+Never compare unlike definitions as if they were identical. Surface methodology breaks, missing data, incomparable frequencies, provisional estimates and revision status.
+
+### 11.9 XAUUSD and global-market transmission layer
+The global map and news stream feed a separate causal analysis:
+- identify which countries, institutions, indicators, policy decisions and events can affect USD, real yields, rates expectations, liquidity, risk appetite, energy and gold supply/demand;
+- model direct and indirect channels, time lags, competing causes and priced-in expectations;
+- produce a traceable event → macro channel → cross-market transmission → XAUUSD hypothesis;
+- separately measure forecast and observed market response over short horizons;
+- do not claim causation from correlation alone; require evidence, alternatives and out-of-sample validation.
+
+### 11.10 Council work allocation and deliverables
+The AI Council must jointly create this system. Assign independent, evidence-backed work packages to actually available free-tier advisors, then peer-review and synthesize:
+- platform architecture research (TradingView, Interactive Brokers, Investing.com and relevant alternatives);
+- country and institution registry/source discovery;
+- official-source/API/SDMX catalogue and licence/redistribution matrix;
+- indicator ontology and canonical event/observation schemas;
+- ingestion, storage, revision/vintage and data-quality architecture;
+- world map/country dashboard and comparison UX;
+- breaking-news/micro-news discovery and verification architecture;
+- cross-country economic graph and causal transmission design;
+- XAUUSD relevance methodology;
+- security, reliability, performance and test plans.
+
+Required Council outputs: source catalogue with URLs and access terms; platform integration feasibility matrix; country/institution coverage matrix; indicator taxonomy; canonical schemas; architecture/data-flow diagram; phased roadmap with dependencies; measurable Definition of Done; estimated free versus paid work; exactly one recommended next task. Record which advisors actually contributed. Default paid-model budget remains $0; paid calls require explicit per-task owner approval.
+
+### 11.11 Acceptance criteria
+- The app has one VIRUS-owned global map and unified data model, not merely embedded third-party pages.
+- Every displayed fact links to its source and shows source class, publication time, first-seen time, retrieval time, freshness and revision status.
+- Every country has a measurable coverage record; missing official data is explicitly visible.
+- Official observations, consensus forecasts, third-party estimates and VIRUS AI hypotheses are separate data classes.
+- Revisions and historical vintages can be replayed as-of a past timestamp without future leakage.
+- Calendar and breaking-news streams are distinct but cross-linked.
+- Source adapters have health checks, rate-limit handling, tests and outage states.
+- Cross-country comparisons expose unit/methodology/frequency differences.
+- XAUUSD impact analysis is explainable, uncertainty-aware and separately validated.
+- Council participation and all completion claims are evidence-backed.
+
+**Owner's explicit requirement:** Build a unique VIRUS AI Global Economic Intelligence Map that unifies official economic data from the world's countries and institutions, a global economic calendar, and a separate world-news/micro-news stream. The Council must help design and create it.
