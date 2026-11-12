@@ -275,3 +275,82 @@ The Council may recommend an implementation order, but the owner retains approva
 
 ---
 **Owner's current instruction:** Use this report as the complete project brief. The Council—not the report author—must decide what is most important, what depends on what and what should be done first.
+
+
+## 10. Owner clarification — VIRUS AI Global Economic & World News Calendar (2026-11-12)
+
+This section is a core product requirement, not an optional XAU/USD add-on. The owner is creating an original, proprietary global economic and world-news intelligence calendar inside VIRUS AI. It must not be reduced to a clone, static schedule, link collection or embedded third-party calendar.
+
+### 10.1 Product ownership and integration principle
+- VIRUS AI owns the calendar's data model, country/source registry, event identity, normalization, timeline, search, alerts, provenance, confidence, analytics, causal links and user interface.
+- Integrate useful information from the three named external platforms discussed with the owner: TradingView (trader/market platform), Interactive Brokers (global brokerage and market-information platform) and Investing.com (economic-calendar/news platform). Treat them as external data sources and reference systems, not as the product's core or owner.
+- Bring permitted data and capabilities into VIRUS AI so the user can work in one app. Prefer official APIs, licensed feeds, documented exports and permitted public publications. Respect provider terms, licensing, attribution, rate limits and redistribution restrictions. Do not assume that a website's visible content can legally or technically be copied or rebroadcast in full.
+- Add direct primary sources independently; do not rely on the three platforms as the sole coverage layer. Preserve source identity and link back to original publications where appropriate.
+- Where a source cannot be integrated, show an explicit unavailable/unsupported status and a lawful alternative. Never fabricate a feed or claim a live connection without a successful probe.
+
+### 10.2 Global country and institution registry
+- Build a versioned registry intended to cover every country and relevant jurisdiction, not only G7/G20 or countries currently important to gold.
+- For each country/jurisdiction, catalogue official institutions and their source endpoints: central bank/monetary authority, national statistics office, finance ministry/treasury, debt-management office, tax/customs authority, energy/mining/agriculture agencies, labour agencies, government press offices, regulator and national exchange where relevant.
+- Include regional and supranational institutions (for example IMF, World Bank, BIS, OECD, ECB, Eurostat, UN agencies, OPEC and relevant energy agencies) as separate entities with their own publication calendars and jurisdictions.
+- Store canonical names, aliases, country/jurisdiction codes, language, timezone, official domain, source type, publication channels, API/feed/document methods, update cadence, access/licence conditions, reliability tier, last successful check and current health.
+- Maintain a coverage matrix: country × institution type × topic × source availability × ingestion status × freshness. Explicitly mark gaps; do not imply full coverage until measured.
+
+### 10.3 Event universe — scheduled and unscheduled
+- Scheduled macroeconomic releases: inflation, CPI/PPI, GDP, employment, wages, PMI, retail sales, industrial output, trade/current account, housing, confidence, fiscal and debt statistics.
+- Monetary policy: rate decisions, statements, minutes, votes, speeches, press conferences, liquidity operations, balance-sheet actions, FX intervention and reserve disclosures.
+- Government and geopolitical events: elections, budgets, tax changes, sanctions, tariffs, trade restrictions, treaties, conflict escalation/de-escalation, emergency measures, political statements and official decisions.
+- Commodities and strategic supply: gold, silver, oil, gas, electricity, uranium, critical minerals, mining, refining, shipping routes, production quotas, inventories and disruptions.
+- Financial system: sovereign issuance/auctions, yields, banking stress, capital controls, market closures, exchange notices, regulation and systemic incidents.
+- Unscheduled/early micro-news: first official statements, local/regional reports, agency notices, company/industry announcements and developing events that may later become major headlines. Keep unverified reports separate from confirmed facts.
+- Calendar records must distinguish scheduled time from actual publication/first-seen time, revised time, delayed/cancelled status and event-timezone conversion.
+
+### 10.4 Canonical event record and provenance
+Every event should support, where applicable:
+- stable VIRUS event ID; country/jurisdiction; institution; topic/category/subcategory; event title and multilingual aliases;
+- scheduled timestamp, timezone, actual release timestamp, first-seen timestamp, last-updated timestamp and source publication timestamp;
+- source URL/document/feed identifier, source type, evidence snapshot/hash and retrieval metadata;
+- event status (scheduled, released, delayed, cancelled, developing, confirmed, disputed, retracted);
+- Actual, Forecast, Previous, revised Previous, units, scale, seasonal adjustment, consensus provider and sample/time of consensus;
+- source confidence, verification state, corroboration count and conflict notes;
+- importance by general macro significance and separately by estimated XAUUSD relevance;
+- historical values/vintages and point-in-time availability, so historical replay only sees information available at that moment.
+Missing values remain UNKNOWN/MISSING, not zero or FALSE. Preserve original source values and normalized values separately. Never silently overwrite revisions.
+
+### 10.5 Original VIRUS AI intelligence layer
+- Deduplicate the same event reported by multiple sources while preserving every source observation and timestamp.
+- Resolve entities, country, institution, event family, related events and cross-border links.
+- Detect unusual changes, deviations from schedules, surprise values, revisions, conflicting statements and emerging event clusters.
+- Build causal graphs: event → policy/economic channel → USD/yields/risk/commodities/cross-market transmission → gold response. Record alternative explanations and uncertainty.
+- Score event importance, source reliability, novelty, urgency and XAUUSD transmission relevance separately; do not collapse them into one opaque score.
+- Separate FACT, OFFICIAL CONFIRMATION, ATTRIBUTED REPORT, UNVERIFIED CLAIM, ANALYST INTERPRETATION and MODEL HYPOTHESIS.
+- Generate explainable summaries in the app, preserve source links and evidence, and update them when new facts arrive.
+- Maintain an event lifecycle: detected → triaged → corroborating → confirmed/disputed/retracted → impact assessed → outcome measured.
+
+### 10.6 XAUUSD impact and learning
+- For each relevant event, record pre-event expectations, known context, scenario probabilities, expected direction/magnitude/horizon, invalidation conditions and confidence.
+- On release, calculate surprise versus consensus and prior/revised values, then monitor actual market reaction across configurable short horizons (including 1, 5, 15, 30 and 60 minutes where data supports it).
+- Distinguish expected impact from observed impact; measure whether the event was already priced in, whether another event dominated and whether transmission was confirmed by market data.
+- Keep point-in-time event history and source vintages for unbiased historical replay, walk-forward/OOS testing and model calibration.
+- The calendar itself must remain useful for all global macro research even when an event has no demonstrated gold impact.
+
+### 10.7 AI Council is a co-design and research team for this product
+- The Council must actively help design and build this global calendar, not merely review it after implementation.
+- Each actually available free-tier advisor may contribute within verified free access: country/source discovery, official-source verification, event taxonomy, schema design, API/feed research, language coverage, deduplication, data quality, causal hypotheses, UI/UX, testing and security review.
+- Paid models are separate optional calls. They are not assumed to be group members and must not be called without explicit per-task owner budget approval. Default remains $0.
+- Give advisors bounded research work packages and the same versioned context; collect source URLs, evidence, confidence, limitations and proposed implementation. The chair reconciles overlap and contradictions.
+- The Council must produce a country-by-country source coverage plan, canonical event schema, integration matrix for the three platforms, phased implementation roadmap, test strategy and exactly one recommended next task.
+- Do not claim every provider or every country has been covered until participation and source coverage are measured.
+
+### 10.8 Acceptance gates
+1. **Specification gate:** approved architecture, event schema, taxonomy, provenance rules, source/licence policy and coverage metrics.
+2. **Country registry gate:** versioned global country/jurisdiction registry with institution/source coverage and explicit gaps.
+3. **Source integration gate:** working, monitored adapters for permitted TradingView, Interactive Brokers and Investing.com data, plus official primary sources; each adapter has tests and failure states.
+4. **Calendar ingestion gate:** scheduled and unscheduled events normalized, deduplicated, versioned and searchable in the VIRUS AI app.
+5. **News/micro-news gate:** first-seen timestamps, source hierarchy, corroboration, retraction and uncertainty handling work end to end.
+6. **Intelligence gate:** explainable event relationships and XAUUSD impact estimates are recorded without future leakage.
+7. **Historical validation gate:** point-in-time replay, coverage/latency/quality metrics, source outage tests and OOS evaluation pass.
+8. **Operational gate:** app displays source freshness, missing coverage, adapter health, event history, alerts and audit trail.
+
+No stage is complete based only on code presence, a design mockup or a provider's marketing claim. Require reproducible tests and observed runtime evidence.
+
+**Owner's explicit clarification:** The deliverable is an original VIRUS AI-owned worldwide economic calendar and world-news/micro-news intelligence system, combining permitted information from TradingView, Interactive Brokers, Investing.com and official institutions/banks of countries worldwide. The entire AI Council should help research, design, validate and implement it.
